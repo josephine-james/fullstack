@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNfFKZuf_Wx2qLoAvxo4X9YpURjrtdZnH_hw&usqp=CAU" height="55px" width = "55px"alt="logo here" style="border-radius: 40px;"/>
+        <nav>
+            <a href ="" class ="nav-link">Home</a>
+            <a href ="" class ="nav-link">Login</a>
+            <a href ="" class ="nav-link">Registeration</a>
+        </nav>
+    </header> 
+   
+    <section id="events">
+        <div class="event-card-2">
+        <h2 style="text-align: center">
+            {{events.event_title}}
+        </h2>
+        <p class="event-det">
+            Date: {{events.date}}
+            <br>
+            Location: {{events.event_location}}
+            <br>
+            Description: {{events.description}}
+        </p>
+            <h3>
+                Register for the event
+            </h3>
+            <div class="form-ele">
+            <form action ="{% url 'detail' events.pk %}" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type ="submit" class ="reg-link">
+            </form>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        © 2023 Event Registeration System
+    </footer>
+</body>
+</html>

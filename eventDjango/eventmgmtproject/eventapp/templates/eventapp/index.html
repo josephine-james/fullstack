@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registeration</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+   <header>
+        <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNfFKZuf_Wx2qLoAvxo4X9YpURjrtdZnH_hw&usqp=CAU" height="55px" width = "55px"alt="logo here" style="border-radius: 40px;"/>
+        <nav>
+            <a href ="" class ="nav-link">Home</a>
+            <a href ="" class ="nav-link">Login</a>
+            <a href ="" class ="nav-link">Registeration</a>
+        </nav>
+    </header> 
+    <section id="events">
+        {% for event in events %}
+        <div class="event-card">
+            <h2 style="color: tomato;">{{event.event_title}}</h2>
+            <p>Location: {{event.event_location}}</p>
+            <p>Date: {{event.date}}</p>
+            <a href="{% url 'detail' event.pk %}" class="event-btn">Details</a>
+        </div>
+        {%endfor %}
+    </section>
+    <footer>
+        © 2023 Event Registeration System
+    </footer>
+</body>
+</html>
